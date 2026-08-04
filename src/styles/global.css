@@ -307,6 +307,14 @@ main {
   text-align: right;
 }
 
+.intro_about {
+  max-width: 85%;
+  margin: 50px 0 50px auto;
+  font-size: calc(1vw + 1rem);
+  line-height: calc(2vw + 1rem);
+  text-align: webkit-center;
+}
+
 @media (min-width: 768px) {
   .intro h2 {
     font-size: calc(7.5vw + 2rem);
