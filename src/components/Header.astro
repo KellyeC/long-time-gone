@@ -1,0 +1,108 @@
+---
+const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/bespoke", label: "Bespoke" },
+    { href: "/blog", label: "Blog" },
+    { href: "/contact", label: "Contact" },
+];
+---
+
+<header class="site-header">
+    <div class="site-header__inner">
+        <div class="site-header__left">
+            <button
+                type="button"
+                class="hamburger"
+                id="menuOpen"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="sidebarNav"
+            >
+                <svg
+                    viewBox="0 0 100 80"
+                    width="30"
+                    height="30"
+                    aria-hidden="true"
+                    focusable="false"
+                >
+                    <rect width="100" height="15" rx="8"></rect>
+                    <rect y="30" width="100" height="15" rx="8"></rect>
+                    <rect y="60" width="100" height="15" rx="8"></rect>
+                </svg>
+            </button>
+        </div>
+
+        <div class="site-header__middle">
+            <a href="/" aria-current="page">Long Time Gone</a>
+        </div>
+
+        <div class="site-header__right"></div>
+    </div>
+</header>
+
+<nav class="sidebar-nav" id="sidebarNav" aria-hidden="true">
+    <button
+        type="button"
+        class="sidebar-nav__close"
+        id="menuClose"
+        aria-label="Close menu"
+    >
+        <svg
+            width="32"
+            height="32"
+            viewBox="0 0 44 44"
+            aria-hidden="true"
+            focusable="false"
+        >
+            <path
+                d="M0.549989 4.44999L4.44999 0.549988L43.45 39.55L39.55 43.45L0.549989 4.44999Z"
+                fill="#fffbf4"></path>
+            <path
+                d="M39.55 0.549988L43.45 4.44999L4.44999 43.45L0.549988 39.55L39.55 0.549988Z"
+                fill="#fffbf4"></path>
+        </svg>
+    </button>
+    <ul class="sidebar-nav__links">
+        {
+            navLinks.map((link) => (
+                <li>
+                    <a href={link.href}>{link.label}</a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>
+<div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
+
+<script>
+    // Runs once per page load. Plain DOM code — no framework needed for this.
+    const openBtn = document.getElementById("menuOpen");
+    const closeBtn = document.getElementById("menuClose");
+    const sidebar = document.getElementById("sidebarNav");
+    const overlay = document.getElementById("sidebarOverlay");
+
+    function openNav() {
+        sidebar?.classList.add("is-open");
+        sidebar?.setAttribute("aria-hidden", "false");
+        if (overlay) overlay.hidden = false;
+        openBtn?.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeNav() {
+        sidebar?.classList.remove("is-open");
+        sidebar?.setAttribute("aria-hidden", "true");
+        if (overlay) overlay.hidden = true;
+        openBtn?.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+    }
+
+    openBtn?.addEventListener("click", openNav);
+    closeBtn?.addEventListener("click", closeNav);
+    overlay?.addEventListener("click", closeNav);
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeNav();
+    });
+</script>
