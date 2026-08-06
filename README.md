@@ -90,9 +90,9 @@ I can't remember what was said about hosting these files, and i'm not 100% sure 
 
 ---
 
-## 7. A few known rough edges
+## 7. To Do
 
-Worth being aware of, even though they're not urgent:
+Welcome to the suck...
 
 - **Contact form** (`contact.astro`) — You'll need to connect this to your website via w3forms.com/
 - **Shop page** (`shop.astro`) — This one is a bit rough at the moment, but I think it works alright! I'll pop some comments in at some point to help you make sense of it. The Layout.astro file has the head script which enables paypal.
