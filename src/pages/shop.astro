@@ -1,7 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Textcontainer from "../components/Textcontainer.astro";
 ---
 
 <Layout title="Shop">
-    <section class="Shop"></section>
+    <Textcontainer heading="">
+        <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
+        <script>
+            cartPaypal.Cart({ id: "pp-view-cart" });
+        </script>
+        <p>
+            Welcome to the Long Time Gone shop! Here you can find our latest
+            designs and limited edition pieces.
+        </p>
+        <p>
+            <paypal-add-to-cart-button data-id="X3JCRWG8TB82C"
+            ></paypal-add-to-cart-button>
+            <script>
+                cartPaypal.AddToCart({ id: "X3JCRWG8TB82C" });
+            </script>
+        </p>
+    </Textcontainer>
 </Layout>
