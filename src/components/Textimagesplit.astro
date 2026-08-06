@@ -1,0 +1,68 @@
+---
+interface Props {
+    imageSrc: string;
+    imageAlt: string;
+}
+const { imageSrc, imageAlt } = Astro.props;
+---
+
+<section class="split">
+    <div class="split__image">
+        <img src={imageSrc} alt={imageAlt} loading="lazy" />
+    </div>
+    <aside class="split__text">
+        <p><slot /></p>
+        <slot name="cta" />
+    </aside>
+</section>
+
+<style>
+    .split {
+        width: 100vw;
+        background: var(--color-sand);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: var(--content-max);
+        margin: 0 auto;
+        padding: 45px;
+    }
+
+    @media (min-width: 768px) {
+        .split {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    .split__image {
+        display: none;
+        width: 30%;
+    }
+
+    @media (min-width: 768px) {
+        .split__image {
+            display: block;
+        }
+    }
+
+    .split__text {
+        color: var(--color-accent);
+        font-style: italic;
+        text-align: center;
+    }
+
+    .split__text p {
+        margin-bottom: 40px;
+        font-size: calc(1vw + 1rem);
+        line-height: calc(2vw + 1rem);
+    }
+
+    @media (min-width: 768px) {
+        .split__text {
+            width: 40%;
+            text-align: left;
+        }
+    }
+</style>

@@ -1,0 +1,31 @@
+---
+interface Props {
+    src: string;
+    alt: string;
+}
+const { src, alt } = Astro.props;
+---
+
+<div class="hero">
+    <img
+        class="hero__image"
+        src="../../public/images/scene1.webp"
+        alt="Chainstitch Yorkshire Scene"
+        loading="eager"
+    />
+</div>
+
+<style>
+    .hero {
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .hero__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+</style>

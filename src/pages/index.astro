@@ -1,64 +1,35 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import IntroHeading from "../components/IntroHeading.astro";
+import ImageBand from "../components/ImageBand.astro";
+import TextImageSplit from "../components/TextImageSplit.astro";
+import CtaBanner from "../components/CtaBanner.astro";
 ---
 
 <Layout title="Home">
-    <div class="hero">
-        <img
-            class="hero__image"
-            src="/public/images/scene1.webp"
-            alt="Chainstitch Yorkshire Scene"
-            loading="eager"
-        />
-    </div>
+    <Hero src="/images/scene1.webp" alt="Chainstitch Yorkshire Scene" />
 
-    <section class="intro">
-        <h2>Custom Chainstitch Embroidery.</h2>
-        <p>
-            Wearable art pieces and accessories.<br /><br />
-            Embroidered using tranditional chainstich techniques.<br /><br />
-            From the southern US to Leeds, UK.
-        </p>
-    </section>
+    <IntroHeading heading="Custom Chainstitch Embroidery.">
+        Wearable art pieces and accessories.<br /><br />
+        Embroidered using tranditional chainstich techniques.<br /><br />
+        From the southern US to Leeds, UK.
+    </IntroHeading>
 
-    <div class="main-image">
-        <img
-            src="public/images/bird1.webp"
-            alt="Chainstitch Bird Design"
-            loading="lazy"
-        />
-    </div>
+    <ImageBand src="/images/bird1.webp" alt="Chainstitch Bird Design" />
 
-    <section class="about">
-        <div class="about__image">
-            <img
-                src="/images/jacket-progress.jpg"
-                alt="An embroidered jacket in progress"
-                loading="lazy"
-            />
-        </div>
-        <aside class="about__text">
-            <p>
-                Learn about chainstitch embroidery and the process used to make
-                fully custom garments and accessories.
-            </p>
-            <a class="btn" href="/about">Learn More</a>
-        </aside>
-    </section>
-
-    <section
-        class="bespoke"
-        style="background-image:url('/images/bespoke-jacket.jpg')"
+    <TextImageSplit
+        imageSrc="/images/bespoke-jacket.webp"
+        imageAlt="An embroidered jacket in progress"
     >
-        <div class="bespoke__overlay">
-            <div class="bespoke__content">
-                <h3>Bespoke</h3>
-                <p>
-                    From full western wear suits to your own design on a denim
-                    jacket, get the garment of your dreams.
-                </p>
-                <a class="btn" href="/bespoke">Start Here</a>
-            </div>
-        </div>
-    </section>
+        Learn about chainstitch embroidery and the process used to make fully
+        custom garments and accessories.
+        <a class="btn" href="/about" slot="cta">Learn More</a>
+    </TextImageSplit>
+
+    <CtaBanner backgroundImage="/images/bespoke-jacket.webp" heading="Bespoke">
+        From full western wear suits to your own design on a denim jacket, get
+        the garment of your dreams.
+        <a class="btn" href="/bespoke" slot="cta">Start Here</a>
+    </CtaBanner>
 </Layout>
