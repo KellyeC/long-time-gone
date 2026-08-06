@@ -7,12 +7,7 @@ const { src, alt } = Astro.props;
 ---
 
 <div class="hero">
-    <img
-        class="hero__image"
-        src="../../public/images/scene1.webp"
-        alt="Chainstitch Yorkshire Scene"
-        loading="eager"
-    />
+    <img class="hero__image" src={src} alt={alt} loading="eager" />
 </div>
 
 <style>
