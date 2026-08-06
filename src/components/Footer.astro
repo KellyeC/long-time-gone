@@ -36,3 +36,69 @@
         <p>&copy; {new Date().getFullYear()}, Long Time Gone</p>
     </section>
 </footer>
+
+<style>
+    .site-footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-shrink: 0;
+        width: 100vw;
+        padding: 50px;
+        background: var(--color-ink);
+    }
+
+    .site-footer section {
+        margin-bottom: 50px;
+        color: var(--color-accent);
+    }
+
+    .site-footer section p {
+        color: var(--color-cream);
+    }
+
+    .site-footer section ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .site-footer section ul li a {
+        color: var(--color-cream);
+        border-bottom: 2px solid transparent;
+        transition: 0.3s ease border;
+    }
+
+    .site-footer section ul li a:hover {
+        border-bottom: 2px solid var(--color-cream);
+    }
+
+    .site-footer__legal p {
+        font-size: 0.7rem;
+    }
+
+    @media (min-width: 768px) {
+        .site-footer {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .site-footer section {
+            min-width: 40%;
+            text-align: center;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .site-footer {
+            padding: 50px;
+        }
+
+        .site-footer section {
+            min-width: 0;
+            text-align: left;
+            margin-bottom: 0;
+        }
+    }
+</style>

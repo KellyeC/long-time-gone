@@ -5,7 +5,6 @@ const navLinks = [
     { href: "/bespoke", label: "Bespoke" },
     { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact" },
-    { href: "/shop", label: "Shop" },
 ];
 ---
 
@@ -77,7 +76,6 @@ const navLinks = [
 <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
 
 <script>
-    // Runs once per page load. Plain DOM code — no framework needed for this.
     const openBtn = document.getElementById("menuOpen");
     const closeBtn = document.getElementById("menuClose");
     const sidebar = document.getElementById("sidebarNav");
@@ -107,3 +105,158 @@ const navLinks = [
         if (e.key === "Escape") closeNav();
     });
 </script>
+
+<style>
+    .site-header {
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        height: 100px;
+        background: var(--color-cream);
+    }
+
+    .site-header__inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100vw;
+        height: 100%;
+        max-width: var(--content-max);
+        margin: 0 auto;
+    }
+
+    .site-header__left {
+        display: flex;
+        justify-content: flex-start;
+        width: 30%;
+        padding-left: 20px;
+    }
+
+    .site-header__middle {
+        display: none;
+        justify-content: center;
+        width: 40%;
+    }
+
+    .site-header__middle a {
+        margin: 0;
+        color: var(--color-ink);
+        font-size: 1.8rem;
+        font-weight: 700;
+        font-style: italic;
+        text-align: center;
+    }
+
+    .site-header__right {
+        width: 22%;
+        margin-left: 8%;
+    }
+
+    @media (min-width: 768px) {
+        .site-header__middle {
+            display: flex;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .site-header__middle a {
+            font-size: 2.2rem;
+        }
+    }
+
+    .hamburger {
+        height: 40px;
+        padding: 0;
+        background: transparent;
+        border: none;
+        color: var(--color-ink);
+    }
+
+    .sidebar-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        padding: 40px;
+        background: var(--color-terracotta);
+        z-index: 11;
+        box-shadow:
+            0 1px 1px rgba(0, 0, 0, 0.2),
+            0 2px 2px rgba(0, 0, 0, 0.2),
+            0 4px 4px rgba(0, 0, 0, 0.2),
+            0 8px 8px rgba(0, 0, 0, 0.2),
+            0 16px 16px rgba(0, 0, 0, 0.2),
+            0 32px 32px rgba(0, 0, 0, 0.2);
+        transform: translateX(-102%) translateZ(0);
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar-nav.is-open {
+        transform: translateX(0) translateZ(0);
+    }
+
+    @media (min-width: 1024px) {
+        .sidebar-nav {
+            max-width: 700px;
+            width: 50%;
+        }
+    }
+
+    .sidebar-nav__close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        height: 44px;
+        padding: 0;
+        background: transparent;
+        border: none;
+    }
+
+    .sidebar-nav__links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 1.5rem;
+        font-style: italic;
+    }
+
+    .sidebar-nav__links li {
+        margin: 20px 0 0;
+    }
+
+    .sidebar-nav__links a {
+        padding: 0;
+        color: var(--color-cream);
+        border-bottom: 2px solid transparent;
+        transition: 0.3s ease border;
+    }
+
+    .sidebar-nav__links a:hover {
+        border-bottom: 2px solid var(--color-cream);
+    }
+
+    @media (min-width: 768px) {
+        .sidebar-nav__links {
+            font-size: 2rem;
+        }
+
+        .sidebar-nav__links li {
+            margin: 40px 0 0;
+        }
+    }
+
+    .sidebar-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    .sidebar-overlay[hidden] {
+        display: none;
+    }
+</style>

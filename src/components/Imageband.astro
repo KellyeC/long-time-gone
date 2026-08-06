@@ -1,0 +1,22 @@
+---
+interface Props {
+    src: string;
+    alt: string;
+}
+const { src, alt } = Astro.props;
+---
+
+<div class="main-image">
+    <img src={src} alt={alt} loading="lazy" />
+</div>
+
+<style>
+    .main-image {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .main-image img {
+        width: 100%;
+    }
+</style>
