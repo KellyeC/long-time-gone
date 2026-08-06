@@ -1,0 +1,48 @@
+---
+interface Props {
+    heading: string;
+}
+
+const { heading } = Astro.props;
+---
+
+<section class="paragraph">
+    <h2>{heading}</h2>
+    <p><slot /></p>
+</section>
+
+<style>
+    .paragraph {
+        width: 100%;
+        max-width: var(--content-max);
+        margin: 0 auto;
+        padding: 15px 15px 0;
+        text-align: center;
+    }
+
+    .paragraph h2 {
+        margin: 0 0 5px;
+        color: var(--color-ink);
+        font-size: calc(5vw + 2rem);
+        line-height: calc(8vw + 2rem);
+        font-style: italic;
+        font-weight: 300;
+    }
+
+    .paragraph p {
+        max-width: 85%;
+        margin: 50px 0 50px auto;
+        font-size: calc(1vw + 1rem);
+        line-height: calc(2vw + 1rem);
+    }
+
+    @media (min-width: 768px) {
+        .paragraph h2 {
+            font-size: calc(7.5vw + 2rem);
+        }
+
+        .paragraph p {
+            max-width: 50%;
+        }
+    }
+</style>
