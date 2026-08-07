@@ -84,9 +84,9 @@ I'd recommend switching out the .webp for higher resolution versions of your ima
 
 ---
 
-## 6. Publishing changes
+## 6. Publishing changes / Deploying the website
 
-I can't remember what was said about hosting these files, and i'm not 100% sure if we can use them as is or if we'll need to compile them. We'll find out soon enough!
+Once you're happy with your edits, head to the repository's github page and select the 'Actions' tab at the top of the page. There'll be an action in there called something like 'Build and Deploy'. Let it run and within 30ish seconds your website will be live.
 
 ---
 
