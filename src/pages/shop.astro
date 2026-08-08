@@ -4,12 +4,7 @@ import Textcontainer from "../components/Textcontainer.astro";
 ---
 
 <Layout title="Shop">
-    <Textcontainer heading="">
-        <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
-        <script>
-            cartPaypal.Cart({ id: "pp-view-cart" });
-        </script>
-        <p>Welcome to the Long Time Gone shop!</p>
+    <Textcontainer heading="Custom Chainstitch Embroidery">
         <p>
             <paypal-add-to-cart-button data-id="X3JCRWG8TB82C"
             ></paypal-add-to-cart-button>
@@ -18,4 +13,9 @@ import Textcontainer from "../components/Textcontainer.astro";
             </script>
         </p>
     </Textcontainer>
+    <paypal-cart-button data-id="pp-view-cart" style="align-self:center;"
+    ></paypal-cart-button>
+    <script>
+        cartPaypal.Cart({ id: "pp-view-cart" });
+    </script>
 </Layout>
