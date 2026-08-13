@@ -8,12 +8,21 @@ const { src, alt } = Astro.props;
 
 <div class="hero">
     <img class="hero__image" src={src} alt={alt} loading="eager" />
+    <div class="shop-link">
+        <a
+            href="https://longtimegone.bigcartel.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Shop
+        </a>
+    </div>
 </div>
 
 <style>
     .hero {
         position: relative;
-        height: 100vh;
+        height: calc(100vh - 100px);
         overflow: hidden;
     }
 
@@ -22,5 +31,39 @@ const { src, alt } = Astro.props;
         height: 100%;
         object-fit: cover;
         object-position: center;
+    }
+
+    .shop-link {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition:
+            background 0.2s linear,
+            border 0.2s linear;
+        border: 1px solid #ff5400;
+        background: #0000005e;
+        color: #ff5400;
+        text-decoration: none;
+        height: auto;
+        display: inline-flex;
+        padding: 16px 32px;
+        width: auto;
+    }
+
+    .shop-link:hover {
+        border: 1px solid #ff5400;
+        background: #ff5400;
+        color: #ffffff;
+    }
+
+    .shop-link a:visited {
+        color: #ff5400;
+    }
+
+    @media (min-width: 500px) {
+        .shop-link {
+            display: none;
+        }
     }
 </style>
