@@ -16,7 +16,7 @@ const { heading } = Astro.props;
         width: 100%;
         max-width: var(--content-max);
         margin: 0 auto;
-        padding: 15px 15px 0;
+        padding: 15px;
         text-align: center;
     }
 
@@ -30,13 +30,13 @@ const { heading } = Astro.props;
     }
 
     .paragraph p {
-        max-width: 85%;
-        margin: 50px 0 50px auto;
-        font-size: calc(1vw + 1rem);
-        line-height: calc(2vw + 1rem);
+        max-width: 100%;
+        margin: 0;
+        font-size: calc(1vw + 0.5rem);
+        line-height: calc(2vw + 0.5rem);
     }
 
-    @media (min-width: 768px) {
+    /* @media (min-width: 768px) {
         .paragraph h2 {
             font-size: 2.5rem;
         }
@@ -44,5 +44,5 @@ const { heading } = Astro.props;
         .paragraph p {
             max-width: 50%;
         }
-    }
+    } */
 </style>
