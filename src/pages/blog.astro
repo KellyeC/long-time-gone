@@ -1,31 +1,41 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import BlogBuilder from "../components/BlogBuilder.astro";
+interface Post {
+    title?: string;
+    IGSrc?: string;
+    IGEmbed?: string;
+    mediaSrc?: string;
+    mediaAlt?: string;
+    content?: string;
+}
+
+const posts: Post[] = [
+    // {
+    //     title: "TEXT WRITTEN HERE WILL DISPLAY A TITLE FOLLOWED BY A DATE",
+    //     IGSrc: "AN IG POST URL HERE WILL LINK TO IG",
+    //     IGEmbed: "AN IG POST URL HERE WILL EMBED AN INSTAGRAM POST (I RECOMMEND YOU USE THIS ONE ON IT'S OWN.",
+    //     mediaSrc: "A LINK TO AN IMAGE YOU HAVE ON THE WEBSITE.. E.G. - /images/whatever.ext",
+    //     mediaAlt: "TEXT THAT APPEARS WHEN YOU HOVER OVER THE IMAGE - FOR ACCESSIBILITY PURPOSES.",
+    //     content: "The text that appears next to image. Keep it concise for now, just until i can format the container to look prettier.
+    //               currently doesn't allow for any formatting, and NEEDS TO BE KEPT ON ONE LINE IN THIS FORMAT. Will fix this later. Promise"
+    // },
+    {
+        title: "look at her",
+        mediaSrc: "/images/nessie.jpeg",
+        mediaAlt: "beautiful dog",
+        content:
+            "Would you just look at her...  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et est dictum, vestibulum nulla eu, tincidunt eros. Etiam malesuada quam metus, eget placerat nisl euismod at. Proin sed ligula pellentesque, tincidunt nibh in, facilisis nibh. Cras pellentesque malesuada orci, ac dictum magna hendrerit quis. Integer lectus odio, vehicula in pellentesque in, finibus a erat. Sed sit amet efficitur ipsum, id varius arcu. In hac habitasse platea dictumst. Proin ultricies dolor sed erat pellentesque dictum. Suspendisse feugiat laoreet elit, sit amet dignissim nulla cursus id. Morbi commodo varius nibh eget sagittis.",
+    },
+    {
+        IGEmbed:
+            "https://www.instagram.com/reel/DYcgSRMs8_w/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    },
+];
 ---
 
 <Layout title="Blog">
-    <section class="Blog">
-        <BlogBuilder
-            title="test blog post"
-            IGSrc="https://www.instagram.com/reel/DYcgSRMs8_w/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-            mediaSrc="/images/bespoke-jacket.webp"
-            mediaAlt="this is some alt text"
-            content="Check out our latest custom chainstitch embroidery work on Instagram!"
-        />
-
-        <BlogBuilder
-            title="Look at her"
-            IGSrc=""
-            mediaSrc="/images/nessie.jpeg"
-            mediaAlt="She's just so..."
-            content="would you just look at her"
-        />
-
-        <!-- Elfsight Instagram Feed | Untitled Instagram Feed -->
-        <!-- <script src="https://elfsightcdn.com/platform.js" async></script>
-        <div
-            class="elfsight-app-869fb647-8443-4059-800e-fe2bb4b63ab1"
-            data-elfsight-app-lazy
-        > -->
-    </section></Layout
->
+    <main>
+        {posts.map((post) => <BlogBuilder {...post} />)}
+    </main>
+</Layout>

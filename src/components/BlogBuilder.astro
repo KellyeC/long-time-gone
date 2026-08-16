@@ -1,37 +1,68 @@
 ---
-interface props {
-    title: string;
-    IGSrc: string;
-    mediaSrc: string;
-    mediaAlt: string;
-    content: string;
+import InstagramEmbed from "./InstagramEmbed.astro";
+
+interface Props {
+    title?: string;
+    IGSrc?: string;
+    IGEmbed?: string;
+    mediaSrc?: string;
+    mediaAlt?: string;
+    content?: string;
 }
-const { title, IGSrc, mediaSrc, mediaAlt, content } = Astro.props;
+const { title, IGSrc, IGEmbed, mediaSrc, mediaAlt, content } = Astro.props;
+const hasTextPanel = Boolean(content) || (Boolean(IGSrc) && !IGEmbed);
 ---
 
 <section class="post">
     <div class="post_title">
-        <p style="text-decoration: underline;">{title}</p>
+        {title && <p style="text-decoration: underline;">{title}</p>}
         <p>- Posted on: {new Date().toLocaleDateString()}</p>
     </div>
-    <div class="post_content">
+    <div
+        class:list={[
+            "post_content",
+            { "post_content--centered": !hasTextPanel },
+        ]}
+    >
         <div class="post__media">
-            <img src={mediaSrc} alt={mediaAlt} class="post__img" />
+            {
+                IGEmbed ? (
+                    <InstagramEmbed url={IGEmbed} />
+                ) : mediaSrc ? (
+                    <img
+                        src={mediaSrc}
+                        alt={mediaAlt ?? ""}
+                        class="post__img"
+                    />
+                ) : null
+            }
         </div>
-        <div class="post__text">
-            <p>{content}</p>
-            <a
-                class="post_link"
-                href={IGSrc}
-                target="_blank"
-                rel="noopener noreferrer">View this blog post on Instagram</a
-            >
-        </div>
+        {
+            hasTextPanel && (
+                <div class="post__text">
+                    {content && <p>{content}</p>}
+                    {!IGEmbed && IGSrc && (
+                        <a
+                            class="post_link"
+                            href={IGSrc}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View this blog post on Instagram
+                        </a>
+                    )}
+                </div>
+            )
+        }
     </div>
 
-    <div class="post__lightbox">
-        <img src={mediaSrc} alt={mediaAlt} />
-    </div>
+    {
+        !IGEmbed && mediaSrc && (
+            <div class="post__lightbox" hidden>
+                <img src={mediaSrc} alt={mediaAlt ?? ""} />
+            </div>
+        )
+    }
 </section>
 
 <style>
@@ -51,11 +82,12 @@ const { title, IGSrc, mediaSrc, mediaAlt, content } = Astro.props;
     .post_title {
         display: flex;
         flex-direction: row;
+        align-items: baseline;
         text-align: center;
         margin-bottom: 15px;
     }
 
-    .post_title h2 {
+    .post_title p:first-child {
         margin-right: 10px;
     }
 
@@ -65,21 +97,36 @@ const { title, IGSrc, mediaSrc, mediaAlt, content } = Astro.props;
         width: 100%;
     }
 
+    .post_content--centered {
+        justify-content: center;
+    }
+
+    .post_content--centered .post__media {
+        width: auto;
+        max-width: 540px;
+    }
+
     .post__media {
         width: 50%;
         max-width: 1000px;
         height: 500px;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         overflow: hidden;
         flex-shrink: 0;
+    }
+
+    .post__media :global(.instagram-media) {
+        max-height: 500px;
+        overflow-y: auto;
     }
 
     .post__img {
         width: 100%;
         height: 100%;
         object-fit: contain;
+        object-position: top;
         cursor: pointer;
     }
 
@@ -87,6 +134,7 @@ const { title, IGSrc, mediaSrc, mediaAlt, content } = Astro.props;
         text-align: left;
         margin-left: 10px;
         padding: 20px;
+        align-self: flex-start;
     }
 
     .post__text p {
@@ -103,7 +151,6 @@ const { title, IGSrc, mediaSrc, mediaAlt, content } = Astro.props;
 
     /* Lightbox */
     .post__lightbox {
-        display: none;
         position: fixed;
         inset: 0;
         background: rgba(0, 0, 0, 0.85);
@@ -114,7 +161,7 @@ const { title, IGSrc, mediaSrc, mediaAlt, content } = Astro.props;
         cursor: zoom-out;
     }
 
-    .post__lightbox.is-open {
+    .post__lightbox:not([hidden]) {
         display: flex;
     }
 
@@ -132,6 +179,11 @@ const { title, IGSrc, mediaSrc, mediaAlt, content } = Astro.props;
         .post__media {
             width: 100%;
             height: 350px;
+        }
+
+        .post_content--centered .post__media {
+            width: 100%;
+            max-width: 400px;
         }
 
         .post__text {
@@ -158,11 +210,11 @@ const { title, IGSrc, mediaSrc, mediaAlt, content } = Astro.props;
         if (!img || !lightbox) return;
 
         img.addEventListener("click", () => {
-            lightbox.classList.add("is-open");
+            lightbox.hidden = false;
         });
 
         lightbox.addEventListener("click", () => {
-            lightbox.classList.remove("is-open");
+            lightbox.hidden = true;
         });
     });
 </script>
