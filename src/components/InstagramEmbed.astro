@@ -1,10 +1,7 @@
 ---
 interface Props {
-    /** Full URL of the Instagram post/reel, e.g. https://www.instagram.com/reel/DYcgSRMs8_w/ */
     url: string;
-    /** Optional caption text shown under the "View this post" link. Falls back to a generic caption. */
     caption?: string;
-    /** Optional max-width in px for the embed card (Instagram's own default is 540). */
     maxWidth?: number;
 }
 
@@ -14,8 +11,6 @@ const {
     maxWidth = 540,
 } = Astro.props;
 
-// Instagram ignores query params on the permalink itself, so keep the url as-is;
-// we just append the tracking params it normally uses for the embed link.
 const permalink = url.replace(/\/?$/, "/"); // ensure trailing slash
 const embedLink = `${permalink}?utm_source=ig_embed&utm_campaign=loading`;
 ---
@@ -55,14 +50,8 @@ const embedLink = `${permalink}?utm_source=ig_embed&utm_campaign=loading`;
 <script is:inline async src="//www.instagram.com/embed.js"></script>
 
 <script>
-    // Instagram's embed.js only scans the DOM once, on its own load.
-    // If embeds are added/re-rendered later (e.g. Astro client-side nav,
-    // or multiple blockquotes present when the script is already cached),
-    // re-trigger processing so every blockquote gets converted.
     function processInstagramEmbeds() {
-        // @ts-ignore - instgrm is injected globally by Instagram's embed.js
         if (window.instgrm) {
-            // @ts-ignore
             window.instgrm.Embeds.process();
         }
     }
