@@ -1,6 +1,9 @@
 ---
 interface Props {
     heading: string;
+    image: string;
+    imageAlt: string;
+    link: string;
 }
 
 const { heading } = Astro.props;
@@ -8,6 +11,12 @@ const { heading } = Astro.props;
 
 <section class="paragraph">
     <h2>{heading}</h2>
+    <img
+        id="text_image"
+        src={Astro.props.image}
+        alt={Astro.props.imageAlt}
+        href={Astro.props.link}
+    />
     <p><slot /></p>
 </section>
 
@@ -18,6 +27,9 @@ const { heading } = Astro.props;
         margin: 0 auto;
         padding: 15px 40px;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .paragraph h2 {
@@ -35,6 +47,13 @@ const { heading } = Astro.props;
         margin: 0;
         font-size: calc(1vw + 0.5rem);
         line-height: calc(2vw + 0.5rem);
+    }
+
+    #text_image {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        margin-bottom: 20px;
     }
 
     /* @media (min-width: 768px) {
