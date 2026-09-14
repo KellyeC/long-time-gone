@@ -2,13 +2,16 @@
 interface Props {
     imageSrc: string;
     imageAlt: string;
+    imageUrl: string;
 }
-const { imageSrc, imageAlt } = Astro.props;
+const { imageSrc, imageAlt, imageUrl } = Astro.props;
 ---
 
 <section class="split">
     <div class="split__image">
-        <img src={imageSrc} alt={imageAlt} loading="lazy" />
+        <a href={imageUrl} target="_blank">
+            <img src={imageSrc} alt={imageAlt} loading="lazy" /></a
+        >
     </div>
     <aside class="split__text">
         <p><slot /></p>

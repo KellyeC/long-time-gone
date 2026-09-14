@@ -3,7 +3,7 @@ interface Props {
     heading: string;
     image: string;
     imageAlt: string;
-    link: string;
+    imageUrl: string;
 }
 
 const { heading } = Astro.props;
@@ -11,12 +11,13 @@ const { heading } = Astro.props;
 
 <section class="paragraph">
     <h2>{heading}</h2>
-    <img
-        id="text_image"
-        src={Astro.props.image}
-        alt={Astro.props.imageAlt}
-        href={Astro.props.link}
-    />
+    <a href={Astro.props.imageUrl} target="_blank"
+        ><img
+            id="text_image"
+            src={Astro.props.image}
+            alt={Astro.props.imageAlt}
+        /></a
+    >
     <p><slot /></p>
 </section>
 
