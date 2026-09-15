@@ -8,20 +8,23 @@ interface Props {
     mediaSrc?: string;
     mediaAlt?: string;
     content?: string;
+    layout?: "float";
 }
-const { title, IGSrc, IGEmbed, mediaSrc, mediaAlt, content } = Astro.props;
+const { title, IGSrc, IGEmbed, mediaSrc, mediaAlt, content, layout } =
+    Astro.props;
 const hasTextPanel = Boolean(content) || (Boolean(IGSrc) && !IGEmbed);
 ---
 
 <section class="post">
     <div class="post_title">
         {title && <p style="text-decoration: underline;">{title}</p>}
-        <p>- Posted on: {new Date().toLocaleDateString()}</p>
+        {title && <p>- Posted on: {new Date().toLocaleDateString()}</p>}
     </div>
     <div
         class:list={[
             "post_content",
             { "post_content--centered": !hasTextPanel },
+            { "post_content--float": layout === "float" },
         ]}
     >
         <div class="post__media">
@@ -106,6 +109,25 @@ const hasTextPanel = Boolean(content) || (Boolean(IGSrc) && !IGEmbed);
         max-width: 540px;
     }
 
+    .post_content--float {
+        display: flow-root;
+    }
+
+    .post_content--float .post__media {
+        float: left;
+        width: 50%;
+        height: 350px;
+        box-sizing: border-box;
+        padding-right: 20px;
+        margin: 0 0 15px 0;
+    }
+
+    .post_content--float .post__text {
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+
     .post__media {
         width: 50%;
         max-width: 1000px;
@@ -184,6 +206,13 @@ const hasTextPanel = Boolean(content) || (Boolean(IGSrc) && !IGEmbed);
         .post_content--centered .post__media {
             width: 100%;
             max-width: 400px;
+        }
+
+        .post_content--float .post__media {
+            float: none;
+            width: 100%;
+            height: 350px;
+            margin: 0 0 15px 0;
         }
 
         .post__text {

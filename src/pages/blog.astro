@@ -8,6 +8,7 @@ interface Post {
     mediaSrc?: string;
     mediaAlt?: string;
     content?: string;
+    layout?: "float";
 }
 
 const posts: Post[] = [
@@ -17,15 +18,25 @@ const posts: Post[] = [
     //     IGEmbed: "AN IG POST URL HERE WILL EMBED AN INSTAGRAM POST (I RECOMMEND YOU USE THIS ONE ON IT'S OWN.",
     //     mediaSrc: "A LINK TO AN IMAGE YOU HAVE ON THE WEBSITE.. E.G. - /images/whatever.ext",
     //     mediaAlt: "TEXT THAT APPEARS WHEN YOU HOVER OVER THE IMAGE - FOR ACCESSIBILITY PURPOSES.",
-    //     content: "The text that appears next to image. Keep it concise for now, just until i can format the container to look prettier.
-    //               currently doesn't allow for any formatting, and NEEDS TO BE KEPT ON ONE LINE IN THIS FORMAT. Will fix this later. Promise"
+    //     content: "The text that appears next to image."
     // },
     {
-        title: "look at her",
-        mediaSrc: "/images/nessie.jpeg",
-        mediaAlt: "beautiful dog",
+        title: "This is a blog post",
+        mediaSrc: "/images/KellyeDanSuitScan.png",
+        mediaAlt: "Kellye Coffyn",
+        layout: "float",
         content:
-            "Would you just look at her...  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et est dictum, vestibulum nulla eu, tincidunt eros. Etiam malesuada quam metus, eget placerat nisl euismod at. Proin sed ligula pellentesque, tincidunt nibh in, facilisis nibh. Cras pellentesque malesuada orci, ac dictum magna hendrerit quis. Integer lectus odio, vehicula in pellentesque in, finibus a erat. Sed sit amet efficitur ipsum, id varius arcu. In hac habitasse platea dictumst. Proin ultricies dolor sed erat pellentesque dictum. Suspendisse feugiat laoreet elit, sit amet dignissim nulla cursus id. Morbi commodo varius nibh eget sagittis.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in ligula quis nunc facilisis rutrum in scelerisque turpis. Quisque posuere quam id libero tempor, et tristique lacus ultrices. Vestibulum laoreet maximus mauris. Nulla ac ex ante. Curabitur vel purus mollis diam pretium pharetra. Vestibulum imperdiet diam felis, a fermentum metus condimentum nec. Pellentesque in eros venenatis, suscipit lorem vel, sollicitudin dui. ",
+        IGSrc: "https://www.thomamason.com",
+    },
+    {
+        title: "This is a blog post",
+        mediaSrc: "/images/KellyeDanSuitScan.png",
+        mediaAlt: "Kellye Coffyn",
+        layout: "float",
+        content:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in ligula quis nunc facilisis rutrum in scelerisque turpis. Quisque posuere quam id libero tempor, et tristique lacus ultrices. Vestibulum laoreet maximus mauris. Nulla ac ex ante. Curabitur vel purus mollis diam pretium pharetra. Vestibulum imperdiet diam felis, a fermentum metus condimentum nec. Pellentesque in eros venenatis, suscipit lorem vel, sollicitudin dui. Fusce ipsum enim, vestibulum vel metus in, cursus fermentum leo. Sed at ante magna. Nunc nec odio turpis. Vestibulum ultrices nunc in arcu euismod, nec ultricies quam feugiat. Vivamus in porttitor diam, vitae auctor erat. Sed vitae tellus ante. Nullam finibus turpis at lectus commodo, at rutrum sem porttitor. Mauris tempus hendrerit ipsum, id condimentum ex. Integer sodales purus ut porttitor cursus. Nam a ex quis ante fermentum posuere et id erat. Donec mollis mauris est, at maximus erat dictum nec.",
+        IGSrc: "https://www.thomamason.com",
     },
     {
         IGEmbed:
