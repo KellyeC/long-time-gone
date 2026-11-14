@@ -8,29 +8,51 @@ import CtaBanner from "../components/Ctabanner.astro";
 ---
 
 <Layout title="Home">
-    <Hero src="/images/scene1.webp" alt="Chainstitch Yorkshire Scene" />
+    <Hero src="/images/railTim.jpg" alt="Clothing rail in Kellye's studio" />
 
-    <IntroHeading heading="Custom Chainstitch Embroidery.">
-        Wearable art pieces and accessories.<br /><br />
-        Embroidered using traditional chainstich techniques.<br /><br />
-        From the southern US to Leeds, UK.
+    <IntroHeading heading="Bespoke Tailor for Fancy Cowboys (of all genders)">
+        Hand-Steered Chainstich and Irish embroidery.<br /><br />
+        Former Tailor and Embroiderer for the 'Rhinestone Rembrandt', Manuel Cuevas
+        <br /><br />
+        Born and Bred Texan, handmade in Leeds
     </IntroHeading>
 
-    <ImageBand src="/images/bird1.webp" alt="Chainstitch Bird Design" />
+    <ImageBand src="/images/LTG Studio B&W-12.jpg" alt="KellyeSue Coffyn in her studio" />
 
     <TextImageSplit
         imageSrc="/images/bespoke-jacket.webp"
         imageAlt="An embroidered jacket in progress"
-        imageUrl=""
     >
-        Learn about chainstitch embroidery and the process used to make fully
-        custom garments and accessories.
+        Learn about the process used to make fully bespoke garments and Western
+        accessories.
         <a class="btn" href="/about" slot="cta">Learn More</a>
     </TextImageSplit>
 
     <CtaBanner backgroundImage="/images/bespoke-jacket.webp" heading="Bespoke">
-        From full western wear suits to your own design on a denim jacket, get
-        the garment of your dreams.
+        From full rhinestoned Western Wear suits made especially for you to
+        Savile Row standards or a custom embroidered denim jacket, let me make
+        you the garment of your dreams.
         <a class="btn" href="/bespoke" slot="cta">Start Here</a>
+
+        <ImageBand src="/images/bird1.webp" alt="Chainstitch Bird Design" />
+
+        <TextImageSplit
+            imageSrc="/images/bespoke-jacket.webp"
+            imageAlt="An embroidered jacket in progress"
+        >
+            Learn about the process used to make fully bespoke garments and
+            Western accessories.
+            <a class="btn" href="/about" slot="cta">Learn More</a>
+        </TextImageSplit>
+
+        <CtaBanner>
+            backgroundImage="/images/bespoke-jacket.webp"
+            heading="Bespoke"
+        >
+            From full rhinestoned Western Wear suits made specifically for you
+            to Savile Row standards or a custom embroidered denim jacket, let me
+            make you the garment of your dreams.
+            <a class="btn" href="/bespoke" slot="cta">Start Here</a>
+        </CtaBanner>
     </CtaBanner>
 </Layout>
